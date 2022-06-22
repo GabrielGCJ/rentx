@@ -14,4 +14,8 @@ app.use("/allUsers",userRoutes)
 app.use("/users", userRoutes)
 
 
+// tá funcionando
+
+
+
 
