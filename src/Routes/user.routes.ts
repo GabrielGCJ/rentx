@@ -1,4 +1,5 @@
 import {  request, response, Router } from "express"; 
+import { PostgresUserRepository } from "../Repositories/PostgresUserRepository";
 import { UserRepository } from "../Repositories/UsersRepository";
 import { CheckAdminService } from "../Services/CheckAdmin";
 import { CreateUserService } from "../Services/CreateUserService";

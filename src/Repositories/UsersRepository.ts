@@ -1,14 +1,15 @@
 import { User } from "../Model/User"
+import { ICreateUserDTO, IUserRepository } from "./IUserRepositories";
 
 // DTO => Data transfer object => Objeto de transferência de dados
 
-interface ICreateUserDTO {
-    name:string,
-    email:string,
-    updated_at:Date
-}
+// interface ICreateUserDTO {
+//     name:string,
+//     email:string,
+//     updated_at:Date
+// }
 
-class UserRepository {
+class UserRepository implements IUserRepository {
 
     private users : User[]  = []
 
