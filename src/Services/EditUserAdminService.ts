@@ -1,3 +1,4 @@
+import { IUserRepository } from "../Repositories/IUserRepositories";
 import { UserRepository } from "../Repositories/UsersRepository";
 
 interface IRequest {
@@ -5,7 +6,7 @@ interface IRequest {
 }
 
 class EditUserAdminService {
-    constructor(private userRepository : UserRepository) {}
+    constructor(private userRepository : IUserRepository) {}
 
     execute({user_id}:IRequest): void{
 

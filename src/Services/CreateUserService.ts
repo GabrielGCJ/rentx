@@ -1,3 +1,4 @@
+import { IUserRepository } from "../Repositories/IUserRepositories";
 import { UserRepository } from "../Repositories/UsersRepository";
 
 interface IRequest {
@@ -8,7 +9,7 @@ interface IRequest {
 
 
 class CreateUserService {
-    constructor(private userRepository : UserRepository) {}
+    constructor(private userRepository : IUserRepository) {}
 
     execute({name,email,updated_at} :IRequest): void{
         
