@@ -13,7 +13,6 @@ class User {
             this.id = uuidV4()
         }
     }
-}
-
+}   
 
 export { User }

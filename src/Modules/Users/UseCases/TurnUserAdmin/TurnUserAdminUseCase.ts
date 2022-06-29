@@ -1,11 +1,10 @@
-import { IUserRepository } from "../Repositories/IUserRepositories";
-import { UserRepository } from "../Repositories/UsersRepository";
+import { IUserRepository } from "../../Repositories/IUserRepositories";
 
 interface IRequest {
     user_id: string
 }
-
-class EditUserAdminService {
+// Antigo EditUserAdminService
+class TurnUserAdminUseCase {
     constructor(private userRepository : IUserRepository) {}
 
     execute({user_id}:IRequest): void{
@@ -16,4 +15,4 @@ class EditUserAdminService {
     }
 }
 
-export { EditUserAdminService }
+export { TurnUserAdminUseCase }
