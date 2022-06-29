@@ -1,4 +1,7 @@
-import { User } from "../Model/User"
+// import { User } from "../../Model/User";
+// import { ICreateUserDTO, IUserRepository } from "../IUserRepositories";
+
+import { User } from "../Model/User";
 import { ICreateUserDTO, IUserRepository } from "./IUserRepositories";
 
 // DTO => Data transfer object => Objeto de transferência de dados
@@ -10,12 +13,22 @@ import { ICreateUserDTO, IUserRepository } from "./IUserRepositories";
 // }
 
 class UserRepository implements IUserRepository {
-
     private users : User[]  = []
 
-    constructor(){
+    private static INSTANCE: UserRepository;
+
+    private constructor(){
         this.users = [];
     }
+
+    public static getInstance() : UserRepository{
+        if(!UserRepository.INSTANCE){
+            UserRepository.INSTANCE = new UserRepository()
+        }
+
+        return UserRepository.INSTANCE
+    }
+
     create({ name,email,updated_at } :ICreateUserDTO): void {
         const user = new User() 
 

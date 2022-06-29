@@ -1,81 +1,57 @@
-import {  request, response, Router } from "express"; 
-import { PostgresUserRepository } from "../Repositories/PostgresUserRepository";
-import { UserRepository } from "../Repositories/UsersRepository";
-import { CheckAdminService } from "../Services/CheckAdmin";
-import { CreateUserService } from "../Services/CreateUserService";
-import { EditUserAdminService } from "../Services/EditUserAdminService";
+import { Router } from "express"; 
+import { UserRepository } from "../Modules/Users/Repositories/UsersRepository";
+import { checkAdminController } from "../Modules/Users/UseCases/CheckAdmin";
+// import { CheckAdminService } from "../Modules/Users/Services/CheckAdmin";
+import { createUserController } from "../Modules/Users/UseCases/CreateUser.ts";
+import { listAllUserController } from "../Modules/Users/UseCases/ListAllUsers";
+import { showUserProfileController } from "../Modules/Users/UseCases/ShowUserProfile";
+import { turnUserAdminController } from "../Modules/Users/UseCases/TurnUserAdmin";
+
 
 const userRoutes = Router();
 
-const userRepository = new UserRepository()
+const userRepository =  UserRepository.getInstance()
 
 userRoutes.post("/",(request,response)=>{
 
-    const { name, email, updated_at } = request.body;   
-
-    const createUserService = new CreateUserService(userRepository)
-    
-    createUserService.execute({name, email, updated_at})
-    
-    // const userAlReadyExists = userRepository.findByName(name)
-
-    // if(userAlReadyExists){
-    //     return response.status(404).json({error: "Esse usuario já existe"})
-    // }
-
-    // userRepository.create({ name, email, updated_at})
-
-    // const all = userRepository.list()
-
-    return response.status( 201 ).send()
+    return createUserController.handle(request,response)
 })
 
 
 userRoutes.get("/",(request,response)=>{
 
-    const all = userRepository.list()
-
-    return response.json({all})
+    return listAllUserController.handle(request,response)
 })
 
 userRoutes.patch("/:user_id/admin",(request,response)=>{
-    const { user_id } = request.params
-
-    const editUserAdminService = new EditUserAdminService(userRepository)
-
-    editUserAdminService.execute({user_id})
-
-    // const user = userRepository.findById(user_id)
-
-    // user.admin = true
-
-    return response.json("Deu Bom")
+    
+    return turnUserAdminController.handle(request,response)
 })
 
-userRoutes.get("/:user_id/admin",(request,response)=>{
-    const { user_id } = request.params
+userRoutes.get("/:id/admin",(request,response)=>{
 
-    const user = userRepository.findById(user_id)
-
-    return response.json({user})
+    return showUserProfileController.handle(request,response)
 })
 
 userRoutes.get("/admin/",(request,response)=>{
-    const { id } = request.headers
 
-    // const checkAdminService = new CheckAdminService(userRepository)
+    return checkAdminController.handle(request,response)
 
-    // checkAdminService.execute({ id })
+    // const { id } = request.headers
 
-    const user = userRepository.findById( id as string )
+    // // const checkAdminService = new CheckAdminService(userRepository)
 
-    if(user.admin === false){
-        return response.status(404).json({error: "Esse usuario não tem permissão"})
-    }
+    // // checkAdminService.execute({ id })
 
-    const all = userRepository.list()
+    // const user = userRepository.findById( id as string )
 
-    return response.json({all})
+    // if(user.admin === false){
+    //     return response.status(404).json({error: "Esse usuario não tem permissão"})
+    // }
+
+    // const all = userRepository.list()
+
+    // return response.json({all})
 })
 
 export { userRoutes }

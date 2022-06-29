@@ -1,5 +1,4 @@
-import { IUserRepository } from "../Repositories/IUserRepositories";
-import { UserRepository } from "../Repositories/UsersRepository";
+import { IUserRepository } from "../../Repositories/IUserRepositories";
 
 interface IRequest {
     name: string;
@@ -7,8 +6,8 @@ interface IRequest {
     updated_at: Date;
 }
 
-
-class CreateUserService {
+// Antigo CreateUserService
+class CreateUserUseCase {
     constructor(private userRepository : IUserRepository) {}
 
     execute({name,email,updated_at} :IRequest): void{
@@ -25,4 +24,4 @@ class CreateUserService {
     }
 }
 
-export { CreateUserService }
+export { CreateUserUseCase }
