@@ -2,6 +2,7 @@ import { User } from "../../Model/User";
 import { IUserRepository } from "../../Repositories/IUserRepositories";
 
 
+
 class ListAllUserUseCase{
     constructor(private userRepository : IUserRepository) {}
 

@@ -2,15 +2,15 @@ import { User } from "../../Model/User";
 import { IUserRepository } from "../../Repositories/IUserRepositories";
 
 interface IRequest {
-    id: string;
+    user_id: string;
 }
 
 class ShowUserProfileUseCase{
     constructor(private userRepository : IUserRepository){}
 
-    execute({id}:IRequest):User {
+    execute({user_id}:IRequest):User {
 
-        const user = this.userRepository.findById(id)
+        const user = this.userRepository.findById(user_id)
 
         return user
     }
