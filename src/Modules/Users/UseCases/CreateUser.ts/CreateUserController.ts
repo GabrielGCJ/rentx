@@ -12,9 +12,9 @@ class CreateUserController {
 
         // const createUserService = new CreateUserService(userRepository)
         
-        this.createUserUseCase.execute({name, email, updated_at})
+        const user = this.createUserUseCase.execute({name, email, updated_at})
 
-        return response.status( 201 ).send()
+        return response.status( 201 ).send(user)
     }
 }
 

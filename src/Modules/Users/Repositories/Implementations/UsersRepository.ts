@@ -1,8 +1,8 @@
-// import { User } from "../../Model/User";
-// import { ICreateUserDTO, IUserRepository } from "../IUserRepositories";
+// import { User } from "../Model/User";
+// import { ICreateUserDTO, IUserRepository } from "./IUserRepositories";
 
-import { User } from "../Model/User";
-import { ICreateUserDTO, IUserRepository } from "./IUserRepositories";
+import { User } from "../../Model/User";
+import { ICreateUserDTO, IUserRepository } from "../IUserRepositories";
 
 // DTO => Data transfer object => Objeto de transferência de dados
 
@@ -29,7 +29,7 @@ class UserRepository implements IUserRepository {
         return UserRepository.INSTANCE
     }
 
-    create({ name,email,updated_at } :ICreateUserDTO): void {
+    create({ name,email,updated_at } :ICreateUserDTO): User {
         const user = new User() 
 
         Object.assign(user, {
@@ -41,6 +41,8 @@ class UserRepository implements IUserRepository {
         })
     
         this.users.push(user)
+
+        return user
     }
 
     list():User[] {

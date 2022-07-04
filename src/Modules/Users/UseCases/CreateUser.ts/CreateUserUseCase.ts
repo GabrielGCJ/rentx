@@ -20,7 +20,9 @@ class CreateUserUseCase {
             throw new Error("Esse usuario já existe")     
         }
 
-        this.userRepository.create({ name, email, updated_at})
+       const user =  this.userRepository.create({ name, email, updated_at})
+
+       return user
     }
 }
 
