@@ -1,7 +1,4 @@
-// import { User } from "../Model/User";
-// import { ICreateUserDTO, IUserRepository } from "./IUserRepositories";
-
-import { User } from "../../Model/User";
+import { User } from "../../Entities/User";
 import { ICreateUserDTO, IUserRepository } from "../IUserRepositories";
 
 // DTO => Data transfer object => Objeto de transferência de dados
