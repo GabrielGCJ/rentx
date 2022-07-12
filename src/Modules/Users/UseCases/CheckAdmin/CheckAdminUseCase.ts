@@ -1,5 +1,4 @@
-// import { IUserRepository } from "../Repositories/IUserRepositories";
-import { User } from "../../Model/User";
+import { User } from "../../Entities/User";
 import { IUserRepository } from "../../Repositories/IUserRepositories";
 
 // interface IRequest {
