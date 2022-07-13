@@ -18,7 +18,7 @@ class User {
     @CreateDateColumn()
     created_at: Date;  
 
-    @CreateDateColumn()
+    @Column()
     updated_at: Date; 
 
 

@@ -2,7 +2,7 @@ import { UserRepository } from "../../Repositories/Implementations/UsersReposito
 import { ListAllUserController } from "./ListAllUserControler";
 import { ListAllUserUseCase } from "./ListAllUserUseCase";
 
-const userRepository = UserRepository.getInstance()
+const userRepository = null
 
 const listAllUserUseCase = new ListAllUserUseCase(userRepository)
 

@@ -3,7 +3,7 @@ import { UserRepository } from "../Modules/Users/Repositories/Implementations/Us
 // import { UserRepository } from "../Modules/Users/Repositories/UsersRepository";
 import { checkAdminController } from "../Modules/Users/UseCases/CheckAdmin";
 // import { CheckAdminService } from "../Modules/Users/Services/CheckAdmin";
-import { createUserController } from "../Modules/Users/UseCases/CreateUser.ts";
+import  createUserController  from "../Modules/Users/UseCases/CreateUser.ts";
 import { listAllUserController } from "../Modules/Users/UseCases/ListAllUsers";
 import { showUserProfileController } from "../Modules/Users/UseCases/ShowUserProfile";
 import { turnUserAdminController } from "../Modules/Users/UseCases/TurnUserAdmin";
@@ -15,7 +15,7 @@ const userRoutes = Router();
 
 userRoutes.post("/",(request,response)=>{
 
-    return createUserController.handle(request,response)
+    return createUserController().handle(request,response)
 })
 
 
