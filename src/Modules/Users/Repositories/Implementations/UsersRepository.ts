@@ -1,58 +1,54 @@
+import { getRepository, Repository } from "typeorm";
 import { User } from "../../Entities/User";
 import { ICreateUserDTO, IUserRepository } from "../IUserRepositories";
 
-// DTO => Data transfer object => Objeto de transferência de dados
-
-// interface ICreateUserDTO {
-//     name:string,
-//     email:string,
-//     updated_at:Date
-// }
 
 class UserRepository implements IUserRepository {
-    private users : User[]  = []
 
-    private static INSTANCE: UserRepository;
+    private repository: Repository<User>
 
-    private constructor(){
-        this.users = [];
+    constructor(){
+        this.repository = getRepository(User)
     }
 
-    public static getInstance() : UserRepository{
-        if(!UserRepository.INSTANCE){
-            UserRepository.INSTANCE = new UserRepository()
-        }
+    
 
-        return UserRepository.INSTANCE
-    }
+    async create({ name,email,updated_at } :ICreateUserDTO): Promise <void> {
+        // const user = new User() 
 
-    create({ name,email,updated_at } :ICreateUserDTO): User {
-        const user = new User() 
+        // Object.assign(user, {
+        //     name,
+        //     admin : false,
+        //     email,
+        //     created_at: new Date(),
+        //     updated_at
+        // })
 
-        Object.assign(user, {
+        const user = this.repository.create({
             name,
             admin : false,
             email,
-            created_at: new Date(),
-            updated_at
+            updated_at            
         })
     
-        this.users.push(user)
+        await this.repository.save(user)
 
+        // return user
+    }
+
+    async list(): Promise<User[]> {
+        // return this.users
+        const users = await this.repository.find()
+        return users
+    }
+
+    async findByName(name:string): Promise<User> {
+        const user = await this.repository.findOne({name})
         return user
     }
 
-    list():User[] {
-        return this.users
-    }
-
-    findByName(name:string): User {
-        const user = this.users.find(user => user.name === name)
-        return user
-    }
-
-    findById(id:string): User {
-        const user = this.users.find(user => user.id === id)
+    async findById(id:string): Promise<User> {
+        const user = await this.repository.findOne({id})
         return user
     }
 }

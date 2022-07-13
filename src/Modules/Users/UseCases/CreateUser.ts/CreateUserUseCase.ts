@@ -10,11 +10,11 @@ interface IRequest {
 class CreateUserUseCase {
     constructor(private userRepository : IUserRepository) {}
 
-    execute({name,email,updated_at} :IRequest): void{
+    async execute({name,email,updated_at} :IRequest): Promise<void>{
         
         // const userRepository = new UserRepository()
 
-        const userAlReadyExists = this.userRepository.findByName(name)
+        const userAlReadyExists = await this.userRepository.findByName(name)
 
         if(userAlReadyExists){
             throw new Error("Esse usuario já existe")     

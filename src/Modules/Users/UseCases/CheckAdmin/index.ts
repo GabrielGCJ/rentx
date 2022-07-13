@@ -5,7 +5,7 @@ import { CheckAdminUseCase } from "./CheckAdminUseCase";
 
 
 
-const userRepository = UserRepository.getInstance()
+const userRepository = null
 
 const checkAdminUseCase = new CheckAdminUseCase(userRepository)
 

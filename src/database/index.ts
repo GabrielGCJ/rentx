@@ -1,5 +1,6 @@
 import { createConnection, getConnectionOptions } from 'typeorm';
 
+console.log("Arquivo dataBase")
 interface IOptions {
   host: string;
 }
@@ -11,6 +12,10 @@ getConnectionOptions().then(options => {
     ...options,
   });
 });
+
+// import { createConnection } from "typeorm";
+
+// createConnection()
 
 
 

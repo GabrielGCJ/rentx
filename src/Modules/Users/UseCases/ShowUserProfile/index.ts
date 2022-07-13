@@ -5,7 +5,7 @@ import { ShowUserProfileUseCase } from "./ShowUserProfileUseCase";
 
 
 
-const userRepository = UserRepository.getInstance()
+const userRepository = null
 
 const showUserProfileUseCase = new ShowUserProfileUseCase(userRepository)
 

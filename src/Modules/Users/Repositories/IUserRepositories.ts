@@ -7,10 +7,10 @@ interface ICreateUserDTO {
 }
 
 interface IUserRepository {
-    findByName(name: string):User;
-    findById(id:string):User;
-    list(): User[] ;
-    create({ name, email, updated_at }: ICreateUserDTO ):void
+    findByName(name: string):Promise<User>;
+    findById(id:string):Promise<User>;
+    list(): Promise<User[]> ;
+    create({ name, email, updated_at }: ICreateUserDTO ):Promise<void>
 }
 
 export { IUserRepository,ICreateUserDTO }

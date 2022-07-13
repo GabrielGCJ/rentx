@@ -6,15 +6,15 @@ class CreateUserController {
 
     constructor(private createUserUseCase : CreateUserUseCase ) {}
 
-    handle( request: Request, response: Response ) : Response {
+    async handle( request: Request, response: Response ) : Promise <Response> {
 
         const { name, email, updated_at } = request.body;   
 
-        // const createUserService = new CreateUserService(userRepository)
+      
         
-        const user = this.createUserUseCase.execute({name, email, updated_at})
+        await this.createUserUseCase.execute({name, email, updated_at})
 
-        return response.status( 201 ).send(user)
+        return response.status( 201 ).send()
     }
 }
 

@@ -5,7 +5,7 @@ import { TurnUserAdminUseCase } from "./TurnUserAdminUseCase";
 
 
 
-const userRepository = UserRepository.getInstance()
+const userRepository = null
 
 const turnUserAdminUseCase = new TurnUserAdminUseCase(userRepository)
 
