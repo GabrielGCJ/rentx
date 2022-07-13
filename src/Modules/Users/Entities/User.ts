@@ -9,8 +9,8 @@ class User {
     @Column()
     name: string;  
 
-    @Column()
-    admin: boolean;  
+    // @Column()
+    // admin: boolean;  
 
     @Column()
     email: string;  
@@ -18,8 +18,8 @@ class User {
     @CreateDateColumn()
     created_at: Date;  
 
-    @Column()
-    updated_at: Date; 
+    // @Column()
+    // updated_at: Date; 
 
 
     constructor(){

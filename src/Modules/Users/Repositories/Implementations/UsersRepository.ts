@@ -13,7 +13,7 @@ class UserRepository implements IUserRepository {
 
     
 
-    async create({ name,email,updated_at } :ICreateUserDTO): Promise <void> {
+    async create({ name,email } :ICreateUserDTO): Promise <void> {
         // const user = new User() 
 
         // Object.assign(user, {
@@ -26,9 +26,7 @@ class UserRepository implements IUserRepository {
 
         const user = this.repository.create({
             name,
-            admin : false,
-            email,
-            updated_at            
+            email          
         })
     
         await this.repository.save(user)
