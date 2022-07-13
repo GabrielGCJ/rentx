@@ -16,10 +16,10 @@ export class CreateUsers1657626253577 implements MigrationInterface {
                             name:"name",
                             type:"varchar",
                         },
-                        {
-                            name:"admin",
-                            type:"bit"
-                        },
+                        // {
+                        //     name:"admin",
+                        //     type:"bit"
+                        // },
                         {
                             name:"email",
                             type:"varchar"
@@ -28,11 +28,11 @@ export class CreateUsers1657626253577 implements MigrationInterface {
                             name:"created_at",
                             type:"timestamp",
                             default:"now()"
-                        },
-                        {
-                            name:"updated_at",
-                            type:"timestamp" 
-                        }    
+                        }
+                        // ,{
+                        //     name:"updated_at",
+                        //     type:"timestamp" 
+                        // }    
                     ],
                 }
             )

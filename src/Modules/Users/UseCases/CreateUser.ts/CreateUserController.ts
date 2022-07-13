@@ -8,11 +8,11 @@ class CreateUserController {
 
     async handle( request: Request, response: Response ) : Promise <Response> {
 
-        const { name, email, updated_at } = request.body;   
+        const { name, email } = request.body;   
 
       
         
-        await this.createUserUseCase.execute({name, email, updated_at})
+        await this.createUserUseCase.execute({name, email})
 
         return response.status( 201 ).send()
     }
