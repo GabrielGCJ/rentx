@@ -3,14 +3,13 @@ import { IUserRepository } from "../../Repositories/IUserRepositories";
 interface IRequest {
     name: string;
     email: string;
-    updated_at: Date;
 }
 
 // Antigo CreateUserService
 class CreateUserUseCase {
     constructor(private userRepository : IUserRepository) {}
 
-    async execute({name,email,updated_at} :IRequest): Promise<void>{
+    async execute({name,email} :IRequest): Promise<void>{
         
         // const userRepository = new UserRepository()
 
@@ -20,7 +19,7 @@ class CreateUserUseCase {
             throw new Error("Esse usuario já existe")     
         }
 
-       const user =  this.userRepository.create({ name, email, updated_at})
+       const user =  this.userRepository.create({ name, email})
 
        return user
     }
